@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Alert, Button, TextInput, View } from 'react-native';
+
+import { useAppDispatch, setNameAction } from '../../redux';
 import { TOnboarding } from '../../routes/types';
-import { setNameAction } from '../../redux/modules/Home/actions';
-import { useAppDispatch } from '../../redux/store/hook';
 
 export function Onboarding({ navigation }: TOnboarding) {
   const dispatch = useAppDispatch();
