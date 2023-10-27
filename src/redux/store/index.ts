@@ -6,7 +6,7 @@ import {
   ThunkAction,
 } from '@reduxjs/toolkit';
 import EncryptedStorage from 'react-native-encrypted-storage';
-import { useDispatch } from 'react-redux';
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import {
   FLUSH,
   PAUSE,
@@ -19,6 +19,7 @@ import {
   REHYDRATE,
 } from 'redux-persist';
 import autoLevelMerge2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
+
 import '../../configs/reactotron';
 
 import homeReducer from '../modules/Home/slice';
@@ -69,5 +70,6 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   unknown,
   Action<string>
 >;
+const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
-export { store, persistor };
+export { store, persistor, useAppSelector };

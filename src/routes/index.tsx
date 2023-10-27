@@ -1,14 +1,15 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
+
 import {
   createNativeStackNavigator,
   NativeStackNavigationOptions,
 } from '@react-navigation/native-stack';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 
 import { Home, Onboarding } from '../modules';
+import { persistor, store } from '../redux';
 import { RootStackParamList } from './types';
-import { persistor, store } from '../redux/store';
 
 const { Navigator, Screen } = createNativeStackNavigator<RootStackParamList>();
 

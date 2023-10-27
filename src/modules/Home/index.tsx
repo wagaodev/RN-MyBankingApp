@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import { useAppSelector } from '../../redux/store/hook';
+
+import { useAppSelector } from '../../redux';
 
 export function Home() {
   const name = useAppSelector(state => state.home.name);

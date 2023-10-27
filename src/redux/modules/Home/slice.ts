@@ -1,7 +1,7 @@
 import type { Draft, PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 
-import { THomeState } from './types';
+import { THomeState } from '.';
 
 const initialState: THomeState = {
   name: '',
