@@ -1,3 +1,5 @@
+import android.os.Bundle;
+import org.devio.rn.splashscreen.SplashScreen;
 package com.mybankingapp;
 
 import com.facebook.react.ReactActivity;
@@ -14,7 +16,13 @@ public class MainActivity extends ReactActivity {
   @Override
   protected String getMainComponentName() {
     return "myBankingApp";
-  }
+  } 
+}
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    SplashScreen.show(this);  // Adicione essa linha
+    super.onCreate(savedInstanceState);
 
   /**
    * Returns the instance of the {@link ReactActivityDelegate}. Here we use a util class {@link

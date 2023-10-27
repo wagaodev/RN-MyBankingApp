@@ -81,10 +81,7 @@
         "alphabetize": { "order": "asc", "ignoreCase": true }
       }
     ],
-    "import/no-extraneous-dependencies": [
-      "error",
-      { "devDependencies": ["**/*.test.tsx", "**/*.spec.tsx", "**/*.ts"] }
-    ]
+    "import/no-extraneous-dependencies": "off"
   },
   "settings": {
     "import/resolver": {
