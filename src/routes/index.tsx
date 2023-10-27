@@ -4,11 +4,11 @@ import {
   createNativeStackNavigator,
   NativeStackNavigationOptions,
 } from '@react-navigation/native-stack';
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
+// import { Provider } from 'react-redux';
+// import { PersistGate } from 'redux-persist/integration/react';
 
 import { Home, Onboarding, Starter } from '../modules';
-import { persistor, store } from '../redux';
+// import { persistor, store } from '../redux';
 import { RootStackParamList } from './types';
 
 const { Navigator, Screen } = createNativeStackNavigator<RootStackParamList>();
@@ -26,18 +26,14 @@ const options: NativeStackNavigationOptions = {
 
 export function Routes() {
   return (
-    <Provider store={store}>
-      <PersistGate persistor={persistor}>
-        <Navigator screenOptions={options}>
-          <Screen
-            name="Starter"
-            component={Starter}
-            options={{ headerShown: false }}
-          />
-          <Screen name="Onboarding" component={Onboarding} />
-          <Screen name="Home" component={Home} />
-        </Navigator>
-      </PersistGate>
-    </Provider>
+    <Navigator screenOptions={options}>
+      <Screen
+        name="Starter"
+        component={Starter}
+        options={{ headerShown: false }}
+      />
+      <Screen name="Onboarding" component={Onboarding} />
+      <Screen name="Home" component={Home} />
+    </Navigator>
   );
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
+import * as S from './styles';
+
 import { useAppSelector } from '../../redux';
 
 export function Home() {
@@ -8,8 +10,8 @@ export function Home() {
   console.log('name', name);
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Olá {name}</Text>
+    <View>
+      <Text>Home</Text>
     </View>
   );
 }
