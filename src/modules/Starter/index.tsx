@@ -19,10 +19,10 @@ export function Starter({ navigation }: TStarter) {
   const handleNavigate = useCallback(() => {
     if (name) {
       setTimeout(() => {
-        navigation.navigate('Home');
+        navigation.replace('Home');
       }, 2000); // Navega para a tela Home após 2 segundos
     } else {
-      navigation.navigate('Onboarding');
+      navigation.replace('Onboarding');
     }
   }, [navigation, name]);
 
