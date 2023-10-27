@@ -25,10 +25,9 @@ import '../../configs/reactotron';
 import homeReducer from '../modules/Home/slice';
 
 const rootPersistConfig: PersistConfig<any> = {
-  version: 2,
-  debug: __DEV__,
-  key: 'HomeStorage',
-  whitelist: ['home'],
+  version: 1,
+  debug: true,
+  key: 'ReactBanking',
   storage: EncryptedStorage,
   stateReconciler: autoLevelMerge2,
 };

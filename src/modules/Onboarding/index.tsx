@@ -1,28 +1,28 @@
 import React, { useState } from 'react';
-import { Alert, Button, TextInput, View } from 'react-native';
+import { Button, TextInput, View } from 'react-native';
 
-import { useAppDispatch, setNameAction } from '../../redux';
+import { useAppDispatch, setNameAction, useAppSelector } from '../../redux';
 import { TOnboarding } from '../../routes/types';
 
 export function Onboarding({ navigation }: TOnboarding) {
-  const dispatch = useAppDispatch();
   const [name, setName] = useState<string>('');
+
+  const dispatch = useAppDispatch();
+  const currentUser = useAppSelector(state => state.home.name);
+
+  console.log('currentUser', currentUser);
+
   const handleSetName = (text: string) => setName(text);
-  const handleNavigateToHome = async (name: string) => {
-    try {
-      dispatch(setNameAction(name));
-    } catch (e) {
-      Alert.alert('Erro ao cadastrar nome');
-      console.tron.log(e);
-    } finally {
-      navigation.navigate('Home');
-    }
+  const handleNavigateToHome = (name: string) => {
+    dispatch(setNameAction(name));
+    navigation.navigate('Home');
   };
 
   return (
     <View>
       <TextInput placeholder="Nome" value={name} onChangeText={handleSetName} />
       <Button title="Cadastrar" onPress={() => handleNavigateToHome(name)} />
+      <Button title="NAVEGAR" onPress={() => navigation.navigate('Home')} />
     </View>
   );
 }

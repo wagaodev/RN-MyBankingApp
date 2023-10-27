@@ -3,12 +3,11 @@ import { setHome } from './slice';
 import { THomeState } from './types';
 
 export const setNameAction =
-  (name: THomeState['name']) => (dispatch: AppDispatch) => {
+  (name: THomeState['name']) => async (dispatch: AppDispatch) => {
     try {
-      const result = dispatch(setHome(name));
-      return result.payload;
-    } catch (error) {
-      console.tron.log(error);
+      return dispatch(setHome(name)).payload;
+    } catch (e) {
+      console.tron.log('Error setting name: ', e);
       return false;
     }
   };
