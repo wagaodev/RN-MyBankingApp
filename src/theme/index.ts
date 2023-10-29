@@ -21,7 +21,7 @@ export const theme = {
       light25: 'rgba(255, 255, 255, 0.25)',
       light10: 'rgba(255, 255, 255, 0.1)',
     },
-    Main: {
+    main: {
       p1: '#8C6FF7',
       p2: '#5A31F4',
       p3: '#3F22AB',

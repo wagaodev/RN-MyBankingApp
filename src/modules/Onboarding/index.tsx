@@ -1,27 +1,34 @@
-import React, { useState } from 'react';
-import { Button, TextInput, View } from 'react-native';
+import React from 'react';
+import { Button, View } from 'react-native';
 
-import { useAppDispatch, setNameAction, useAppSelector } from '../../redux';
+import { z } from 'zod';
+
+import { Form } from '../../components/Form'; // Ajuste o caminho conforme necessário
+import { useAppDispatch, setNameAction } from '../../redux';
 import { TOnboarding } from '../../routes/types';
 
+const nameSchema = z.string().min(4, { message: 'Mínimo 3 caracteres' });
+
 export function Onboarding({ navigation }: TOnboarding) {
-  const [name, setName] = useState<string>('');
-
   const dispatch = useAppDispatch();
-  const currentUser = useAppSelector(state => state.home.name);
 
-  console.log('currentUser', currentUser);
-
-  const handleSetName = (text: string) => setName(text);
-  const handleNavigateToHome = (name: string) => {
-    dispatch(setNameAction(name));
+  const handleNavigateToHome = (values: Record<string, any>) => {
+    dispatch(setNameAction(values.name));
     navigation.navigate('Home');
   };
 
   return (
     <View>
-      <TextInput placeholder="Nome" value={name} onChangeText={handleSetName} />
-      <Button title="Cadastrar" onPress={() => handleNavigateToHome(name)} />
+      <Form
+        inputs={[
+          {
+            name: 'name',
+            placeholder: 'Nome',
+            validationSchema: nameSchema,
+          },
+        ]}
+        onSubmit={handleNavigateToHome}
+      />
       <Button title="NAVEGAR" onPress={() => navigation.navigate('Home')} />
     </View>
   );
